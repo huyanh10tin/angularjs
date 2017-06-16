@@ -6,7 +6,7 @@ angular.module('confusionApp')
             
             $scope.tab = 1;
             $scope.filtText = '';
-            $scope.showDetails = false;
+            $scope.showDetails = true;
 
             $scope.dishes= menuFactory.getDishes();
                         
@@ -67,9 +67,9 @@ angular.module('confusionApp')
             };
         }])
 
-        .controller('DishDetailController', ['$scope','menuFactory', function($scope,menuFactory) {
-
-            $scope.dish= menuFactory.getDish(3);
+        .controller('DishDetailController', ['$scope','$routeParams','menuFactory', function($scope,$routeParams,menuFactory) {
+            var dish = menuFactory.getDish(parseInt($routeParams.id,10));
+            $scope.dish = dish;
             
             
         }])
